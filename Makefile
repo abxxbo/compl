@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -Iinclude -Wall -Wextra -std=c99 -O3 -lraylib -lm
+CFLAGS := -Iinclude -Wall -Wextra -std=c99 -O3 -lraylib -lm -g
 
 all: clean compl
 clean:
@@ -8,3 +8,6 @@ clean:
 compl:
 	mkdir -p bin/
 	gcc src/compl.c $(CFLAGS) -o bin/compl
+
+run: ./bin/compl
+	$^
