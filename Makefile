@@ -1,16 +1,10 @@
 CC := gcc
-CFLAGS := -Iinclude -Wall -Wextra -std=c99 -O3
-
-
-override CFILES := $(shell find ./ -type f -name '*.c')
-override OFILES := $(shell find ./ -type f -name '*.o')
+CFLAGS := -Iinclude -Wall -Wextra -std=c99 -O3 -lraylib -lm
 
 all: clean compl
 clean:
-	rm -rf obj/ bin/
+	rm -rf bin/
 
 compl:
-	mkdir -p obj/ bin/
-	$(foreach file, $(CFILES), $(CC) $(CFLAGS) -c $(file) -o obj/$(basename $(notdir $(file))).o;)
-
-	gcc $(OFILES) -o bin/compl
+	mkdir -p bin/
+	gcc src/compl.c $(CFLAGS) -o bin/compl
