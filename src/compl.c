@@ -9,7 +9,7 @@ typedef struct point {
   bool rendered;
 } point_t;
 
-#define MAX_PTS 256
+#define MAX_PTS 2
 #define PTRADII 005   // Point radius
 
 
@@ -25,6 +25,13 @@ int main(void){
   int cur_pt_iter = 0;    // the current element for the array
                           // this value would be 3 if you are looking
                           // for the 4th element in the array.
+
+  // force to be uninitialized
+  for(int i = 0; i != MAX_PTS; i++){
+    points[i].imaginary_pos = 0;
+    points[i].real_pos      = 0;
+    points[i].rendered      = false;
+  }
 
   while(!WindowShouldClose()){
     // Draw
