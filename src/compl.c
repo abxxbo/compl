@@ -9,7 +9,7 @@ typedef struct point {
   bool rendered;
 } point_t;
 
-#define MAX_PTS 2
+#define MAX_PTS 256
 #define PTRADII 005   // Point radius
 
 
@@ -57,11 +57,12 @@ int main(void){
       if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
         for(int i = 0; i != MAX_PTS; i++){
           if(points[i].real_pos != GetMouseX() &&
-             points[i].real_pos != GetMouseY()){
+             points[i].imaginary_pos != GetMouseY()){
             points[cur_pt_iter].imaginary_pos = GetMouseY();
             points[cur_pt_iter].real_pos      = GetMouseX();
             points[cur_pt_iter].rendered      = true;
             cur_pt_iter++;
+            break;
           } else continue;
         }
       }
