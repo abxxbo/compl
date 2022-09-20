@@ -50,5 +50,8 @@ Use the arrow keys to move.
 | Left, Right | Moves real axis left/right   |
 | Up, Down    | Moves Imaginary axis up/down |
 
+## Clearing All Points
+Press C.
+
 # Screenshots of COMPL
 TBA
