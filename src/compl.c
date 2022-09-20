@@ -13,11 +13,15 @@ typedef struct point {
 typedef struct {
   uint32_t start_y;
   uint32_t end_y;
+  uint32_t start_x;
+  uint32_t end_x;
 } graph_im_line_t;
 
 typedef struct {
   uint32_t start_x;
   uint32_t end_x;
+  uint32_t start_y;
+  uint32_t end_y;
 } graph_re_line_t;
 
 
@@ -53,8 +57,10 @@ int main(void){
   }
 
   graph_t gr = { .re.start_x = 0, .re.end_x = 640,
-                 .im.start_y = (640/2),
-                 .im.end_y   = 480 };
+                .re.start_y  = 480/2, .re.end_y = 480/2,
+
+                 .im.start_y = (640/2), .im.end_y = 480,
+                 .im.start_x = 0, .im.end_x = (640/2) };
 
   while(!WindowShouldClose()){
     // Draw
@@ -72,8 +78,8 @@ int main(void){
       // Draw graph lines
       // DrawLine(640/2, 0, 640/2, 480, BLACK); // Y
       // DrawLine(0, 480/2, 640, 480/2, BLACK); // X
-      DrawLine(gr.re.start_x, 480/2, gr.re.end_x, 480/2, BLACK);     // X
-      DrawLine(gr.im.start_y, 0, gr.im.start_y, gr.im.end_y, BLACK); // Y
+      DrawLine(gr.re.start_x, gr.re.start_y, gr.re.end_x, gr.re.end_y, BLACK);     // X
+      DrawLine(gr.im.start_y, gr.im.start_x, gr.im.start_y, gr.im.end_y, BLACK); // Y
 
       DrawText(TextFormat("Re: %d\nIm: %d",
                           GetMouseX(), GetMouseY()), 0, 0, 10, BLACK);
@@ -99,6 +105,22 @@ int main(void){
         for(int k = 0; k != MAX_PTS; k++){
           if(points[k].rendered == true){
             points[k].real_pos += 5;
+          }
+        }
+      } else if(IsKeyPressed(KEY_UP)){
+        gr.re.start_y += 5;
+        gr.re.end_y = gr.re.start_y;
+        for(int k = 0; k != MAX_PTS; k++){
+          if(points[k].rendered == true){
+            points[k].imaginary_pos += 5;
+          }
+        }
+      } else if(IsKeyPressed(KEY_DOWN)){
+        gr.re.start_y -= 5;
+        gr.re.end_y = gr.re.start_y;
+        for(int k = 0; k != MAX_PTS; k++){
+          if(points[k].rendered == true){
+            points[k].imaginary_pos -= 5;
           }
         }
       }
