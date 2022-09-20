@@ -136,7 +136,16 @@ int main(void){
             points[cur_pt_iter].rendered      = true;
             cur_pt_iter++;
             break;
-          } else continue;
+          } else {
+            // if the rendered state is true, and we
+            // are on the point, just unrender it.
+            // TODO: remove from list of points
+            // also broken, but ehhh
+            for(int i = 0; i != MAX_PTS; i++){
+              if(points[i].rendered == true)
+                points[i].rendered = false;
+            }
+          };
         }
       }
 
