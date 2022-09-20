@@ -28,7 +28,7 @@ typedef struct {
   graph_im_line_t im;
 } graph_t;
 
-#define MAX_PTS 256
+#define MAX_PTS 2406
 #define PTRADII 005   // Point radius
 
 // point color
