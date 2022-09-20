@@ -41,3 +41,14 @@ In the top right corner, you should see a list of all your points.
 ## Removing Points
 To remove a point, hover the mouse over the point, and left-click the point.
 It will be removed from the list of points as well as being unrendered.
+
+## Moving the "Camera" Around
+Use the arrow keys to move.
+
+|    Keys     | What it Does|
+| ----------- | ----------- |
+| Left, Right | Moves real axis left/right   |
+| Up, Down    | Moves Imaginary axis up/down |
+
+# Screenshots of COMPL
+TBA
