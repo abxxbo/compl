@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 #include <raylib.h>
-#include "inc/compl.h"
+#include "compl.h"
 
 // Ignore this, this makes raylib not log anything
 void _(){}
@@ -10,6 +10,7 @@ void _(){}
 int main(void){
   SetTraceLogCallback(_);
   InitWindow(640, 480, "COMPL");
+  SetTargetFPS(60);
 
   // Array of points
   point_t points[MAX_PTS];
@@ -30,10 +31,20 @@ int main(void){
                  .im.start_y = (640/2), .im.end_y = 480,
                  .im.start_x = 0, .im.end_x = (640/2) };
 
+
+  Font f = LoadFont("src/res/font.ttf");
+
   while(!WindowShouldClose()){
     // Draw
     BeginDrawing();
+      
       ClearBackground(WHITE);
+
+      // Draw info, top left
+      DrawTextEx(f, "Welcome to COMPL.\nRunning at 60 FPS",
+                 (Vector2){0.0f, 0.0f}, 20, 0, BLACK);
+
+
 
       // Plot all visible points
       for(int i = 0; i != MAX_PTS; i++){
@@ -113,6 +124,11 @@ int main(void){
           };
         }
       }
+
+      // Clear every single point visible
+      if(IsKeyPressed(KEY_C))
+        for(int i = 0; i != MAX_PTS; i++)
+          points[i].rendered = false;
 
     EndDrawing();
   }

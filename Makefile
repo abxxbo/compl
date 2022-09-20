@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -Iinclude -Wall -Wextra -std=c99 -O3 -lraylib -lm -g
+CFLAGS := -Iinc -Wall -Wextra -std=c99 -O3 -lraylib -lm -g
 
 all: clean compl
 clean:
