@@ -35,6 +35,9 @@ typedef struct {
 #define MAX_PTS 256
 #define PTRADII 005   // Point radius
 
+// point color
+#define COLOR    RED
+#define CO_LINE  BLACK
 
 // Ignore this, this makes raylib not log anything
 void _(){}
@@ -71,18 +74,15 @@ int main(void){
       for(int i = 0; i != MAX_PTS; i++){
         if(points[i].rendered == true){
           DrawCircle(points[i].real_pos, points[i].imaginary_pos,
-                      PTRADII, BLACK);
+                      PTRADII, COLOR);
         }
       }
 
       // Draw graph lines
       // DrawLine(640/2, 0, 640/2, 480, BLACK); // Y
       // DrawLine(0, 480/2, 640, 480/2, BLACK); // X
-      DrawLine(gr.re.start_x, gr.re.start_y, gr.re.end_x, gr.re.end_y, BLACK);     // X
-      DrawLine(gr.im.start_y, gr.im.start_x, gr.im.start_y, gr.im.end_y, BLACK); // Y
-
-      DrawText(TextFormat("Re: %d\nIm: %d",
-                          GetMouseX(), GetMouseY()), 0, 0, 10, BLACK);
+      DrawLine(gr.re.start_x, gr.re.start_y, gr.re.end_x, gr.re.end_y, CO_LINE);   // X
+      DrawLine(gr.im.start_y, gr.im.start_x, gr.im.start_y, gr.im.end_y, CO_LINE); // Y
 
 
       /**  input  **/
